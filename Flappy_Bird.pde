@@ -20,7 +20,7 @@ void setup() {
 void draw() {
   if (running){
     background(75, 200, 225); 
-    level.advance(); //should the level advance or the bird move first?
+    level.advance();
     flappy.update();
     flappy.drawMe(); // draw the bird after drawing the level, to make the bird be in front.
     if (level.checkCollisions(flappy)) {
@@ -29,8 +29,8 @@ void draw() {
     level.removeOldPipes();
     
     // print score to screen
-    fill(255,255,0);
-    textSize(20);
+    fill(255,255,255);
+    textSize(30);
     text(flappy.pipesPassed, width / 2, height * 0.1 );
   }
 }

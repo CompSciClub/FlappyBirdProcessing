@@ -7,7 +7,7 @@ int pipes_to_the_left; // for keeping track of score.
 boolean running;
 
 void setup() {
-  running = true;
+  running = false;
   size(400, 600);
   background(75, 200, 225);
   g = 0.1;
@@ -33,11 +33,19 @@ void draw() {
     textSize(30);
     text(flappy.pipesPassed, width / 2, height * 0.1 );
   }
+  else {
+    fill(255,255,255);
+    textSize(30);
+    text("Click to Start!", width / 4, height / 10);
+  }
 }
 
 void mousePressed() {
   if (running){
     flappy.flap();
+  }
+  else {
+    running = true; 
   }
 }
 

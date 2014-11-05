@@ -34,6 +34,7 @@ void draw() {
     text(flappy.pipesPassed, width / 2, height * 0.1 );
   }
   else {
+    background(75, 200, 225); 
     fill(255,255,255);
     textSize(30);
     text("Click to Start!", width / 4, height / 10);
@@ -75,7 +76,7 @@ class Bird {
     // track score
     int count = 0;
     for (Pipe p : level.pipeList){
-      if (p.x + pipeWidth < this.x) count++;
+      if (p.x + pipeWidth/2 < this.x) count++;
     }
     if (count > pipes_to_the_left){
       pipesPassed++;
@@ -171,21 +172,10 @@ class Stage {
       bird.y = 0;
       bird.velY = 0;
     }
-    //huge collision check algorithm
+    //collision check algorithm
     //for each pipe check collision
     for (int i=0; i<pipeList.size (); i++) {
       Pipe p = pipeList.get(i);
-      /*
-        //top surface of bird
-       for (int m=bird.x; m<=bird.x+bird.birdWidth; m++) {
-       p.checkCollision(m,bird.y);
-       }
-       //bottom surface of bird
-       for (int m=bird.x; m<=bird.x+bird.birdWidth; m++) {
-       p.checkCollision(m,bird.y+bird.birdHeight);
-       }*/
-
-      // If our bird is rectangular, it is more efficient just to check the corners.
       c = c || p.checkCollision(bird.x, bird.y);
       c = c || p.checkCollision(bird.x + bird.birdWidth, bird.y);
       c = c || p.checkCollision(bird.x, bird.y + bird.birdHeight);
